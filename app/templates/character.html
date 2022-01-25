@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h1> Personagens da marvel </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="character in charactersList">
+            <a href="#/character/{{character.id}}" class="border bg-light mb-4 d-inline-block w-100 p-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="text-dark m-0"> {{character.name}} </h6>
+                        <hr>
+                    </div>
+                    <div class="col-md-5">
+                        <img ng-src="{{character.thumbnail.path + '/standard_large.jpg'}}"
+                            class="d-inline-block w-100 rounded">
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-gray"> {{ character.description.length > 0 ? character.description.substring(0,
+                            100) + '...' : ''}} </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" ng-if="page > 0"><span class="page-link" ng-click="changePage(page - 1)">Previous</span></li>
+                    <li class="page-item"><span class="page-link" ng-click="changePage(0)">1</span></li>
+                    <li class="page-item"><span class="page-link" ng-click="changePage(1)">2</span></li>
+                    <li class="page-item"><span class="page-link" ng-click="changePage(2)">3</span></li>
+                    <li class="page-item"><span class="page-link" ng-click="changePage(3)">4</span></li>
+                    <li class="page-item"><span class="page-link" ng-click="changePage(page + 1)">Next</span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
