@@ -1,0 +1,23 @@
+{
+  "name": "angular-simple-app",
+  "version": "1.0.0",
+  "description": "Just a simple AngularJS App to show some of its power!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictoorSantana/marvel-angularjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictoorSantana/marvel-angularjs/issues"
+  },
+  "homepage": "https://github.com/VictoorSantana/marvel-angularjs#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
