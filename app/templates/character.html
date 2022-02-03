@@ -3,10 +3,38 @@
         <div class="col-md-12 mb-3">
             <h1> Personagens da marvel </h1>
         </div>
+        <!-- <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Home</a></li>                    
+                </ol>
+            </nav>
+        </div> -->
     </div>
 </div>
 
-<div class="container">
+
+
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="input-group">
+                <input ng-model="search" ng-model-options='{ debounce: 1600 }' ng-change='changeSearch()' type="text"
+                    class="form-control" placeholder="Buscar pelo nome...">
+
+                <div class="input-group-append">
+                    <button ng-click="changeSearch()" class="btn btn-outline-primary" type="button">Buscar <i
+                            class="fas fa-search"></i> </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-if="charactersList.length && !loading">
     <div class="row">
         <div class="col-md-4" ng-repeat="character in charactersList">
             <a href="#/character/{{character.id}}" class="border bg-light mb-4 d-inline-block w-100 p-2">
@@ -16,12 +44,14 @@
                         <hr>
                     </div>
                     <div class="col-md-5">
-                        <img ng-src="{{character.thumbnail.path + '/standard_large.jpg'}}"
-                            class="d-inline-block w-100 rounded">
+                        <img onerror="this.src='https://via.placeholder.com/150x150?text=Sem%20Imagem';"
+                            ng-src="{{character.thumbnail.path + '/standard_large.jpg'}}"
+                            class="d-inline-block w-100 rounded" alt="thumbnail">
                     </div>
                     <div class="col-md-7">
-                        <p class="text-gray"> {{ character.description.length > 0 ? character.description.substring(0,
-                            100) + '...' : ''}} </p>
+                        <p class="text-gray">
+                            {{ character.description.length > 0 ? character.description.substring(0,
+                            100) + '...' : 'Sem descrição.'}} </p>
                     </div>
                 </div>
             </a>
@@ -29,18 +59,40 @@
     </div>
 </div>
 
-
 <div class="container">
+    <div class="d-flex justify-content-center w-100" ng-if="loading">
+        <div>
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center" ng-if="!loading && !charactersList.length">
+    <p class="text-secondary">Nenhum personagem encontrado!</p>
+</div>
+
+
+<div class="container" ng-if="charactersList.length">
     <div class="row">
         <div class="col-md-12">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item" ng-if="page > 0"><span class="page-link" ng-click="changePage(page - 1)">Previous</span></li>
-                    <li class="page-item"><span class="page-link" ng-click="changePage(0)">1</span></li>
-                    <li class="page-item"><span class="page-link" ng-click="changePage(1)">2</span></li>
-                    <li class="page-item"><span class="page-link" ng-click="changePage(2)">3</span></li>
-                    <li class="page-item"><span class="page-link" ng-click="changePage(3)">4</span></li>
-                    <li class="page-item"><span class="page-link" ng-click="changePage(page + 1)">Next</span></li>
+                    <li class="page-item" ng-if="page > 0">
+                        <span class="page-link cursor-pointer" ng-click="changePage(page - 1)"><i
+                                class="fas fa-arrow-left"></i></span>
+                    </li>
+                    <li class="page-item" ng-class="{ active: page === 0 }"><span class="page-link cursor-pointer"
+                            ng-click="changePage(0)">1</span></li>
+                    <li class="page-item" ng-class="{ active: page === 1 }"><span class="page-link cursor-pointer"
+                            ng-click="changePage(1)">2</span></li>
+                    <li class="page-item" ng-class="{ active: page === 2 }"><span class="page-link cursor-pointer"
+                            ng-click="changePage(2)">3</span></li>
+                    <li class="page-item" ng-class="{ active: page === 3 }"><span class="page-link cursor-pointer"
+                            ng-click="changePage(3)">4</span></li>
+                    <li class="page-item"><span class="page-link cursor-pointer" ng-click="changePage(page + 1)"><i
+                                class="fas fa-arrow-right"></i></span></li>
                 </ul>
             </nav>
         </div>

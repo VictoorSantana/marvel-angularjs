@@ -1,9 +1,13 @@
-
 <br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="#/characters" type="button" class="btn btn-link"> Voltar a tela inicial </a>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item"><a href="#/characters">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{character.name}} </li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
@@ -12,7 +16,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <img ng-src="{{character.thumbnail.path + '/standard_large.jpg'}}" class="d-inline-block w-100 rounded">
+            <img ng-src="{{character.thumbnail.path + '/standard_large.jpg'}}" class="d-inline-block w-100 rounded"
+                alt="thumbnail">
         </div>
         <div class="col-md-10">
             <h4 class="text-primary h2"> Personagem: <strong class="text-dark">{{character.name}}</strong> </h4>
@@ -38,8 +43,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="comics in character.comics.items">
-                            <th scope="row"><p style="font-weight: 400;"> {{comics.name}} </p></th>                            
-                        </tr>                        
+                            <th scope="row">
+                                <p style="font-weight: 400;"> {{comics.name}} </p>
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -58,8 +65,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="serie in character.series.items">
-                            <th scope="row"><p style="font-weight: 400;"> {{serie.name}} </p></th>                            
-                        </tr>                        
+                            <th scope="row">
+                                <p style="font-weight: 400;"> {{serie.name}} </p>
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -79,9 +88,13 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="story in character.stories.items">
-                            <th scope="row"><p style="font-weight: 400;"> {{story.name}} </p></th>                            
-                            <th scope="row"><p style="font-weight: 400;"> {{story.type}} </p></th>                            
-                        </tr>                        
+                            <th scope="row">
+                                <p style="font-weight: 400;"> {{story.name}} </p>
+                            </th>
+                            <th scope="row">
+                                <p style="font-weight: 400;"> {{story.type}} </p>
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -100,8 +113,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="event in character.events.items">
-                            <th scope="row"><p style="font-weight: 400;"> {{event.name}} </p></th>                            
-                        </tr>                        
+                            <th scope="row">
+                                <p style="font-weight: 400;"> {{event.name}} </p>
+                            </th>
+                        </tr>
                     </tbody>
                 </table>
             </div>

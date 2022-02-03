@@ -8,12 +8,14 @@ App.factory('CharacterFactory', ['$http', '$q', 'md5', function ($http, $q, md5)
   var apiPrivateKey = 'fbf255068eccea6d0ef951b9f25626b57ab2fe72';
 
 
-  factory.getCharacters = function (offset = 1, limit = 10) {
+  factory.getCharacters = function (offset = 1, limit = 10, startsWith = '') {
     var def = $q.defer();    
 
     const currentTime = new Date().toISOString();
     const hash = md5.createHash(currentTime + apiPrivateKey + apiKey);
-    const url = `${apiUrl}characters?limit=${limit}&offset=${offset}&hash=${hash}&apikey=${apiKey}&ts=${currentTime}`;
+    const nameStartsWith = startsWith ? `&nameStartsWith=${startsWith}` : '';
+    
+    const url = `${apiUrl}characters?limit=${limit}&offset=${offset}&hash=${hash}${nameStartsWith}&apikey=${apiKey}&ts=${currentTime}`;
 
     $http.get(url).success(function (response) {
       if (response.data.results.length > 0) {

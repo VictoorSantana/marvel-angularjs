@@ -1,7 +1,7 @@
 {
-  "name": "angular-simple-app",
+  "name": "marvel-angularjs-test",
   "version": "1.0.0",
-  "description": "Just a simple AngularJS App to show some of its power!",
+  "description": "Projeto simples de AngularJs demonstração.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/VictoorSantana/marvel-angularjs.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Victor Santana",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/VictoorSantana/marvel-angularjs/issues"
